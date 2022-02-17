@@ -13,19 +13,17 @@ const useStyles = makeStyles({
     },
   });
 
-
-
 const Header = () => {
 
     const classes = useStyles();
  
-    const history = useNavigate();
+    const navigate = useNavigate();
 
   return (
    <AppBar color='transparent' position='static'>
    <Container>
    <Toolbar>
-   <Typography onClick={() => history.push('/')} className={classes.title}>CryptMoney</Typography>  
+   <Typography onClick={() => navigate('../', { replace: true })} className={classes.title}>CryptMoney</Typography>  
    <Select variant='outlined' style={{
        width: 100,
        height: 40,
