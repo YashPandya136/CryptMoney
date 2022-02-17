@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/styles'
 import Container from '@material-ui/core/Container';
 import React from 'react'
 import { Typography } from '@material-ui/core';
+import Carousal from './Carousal';
 
 const useStyle = makeStyles({
     banner: {
@@ -15,6 +16,11 @@ const useStyle = makeStyles({
         justifyContent: 'space-around',
     },
     tagline: {
+        display: 'flex',
+        height: '40%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        textAlign: 'center',
 
     },
   });
@@ -29,7 +35,6 @@ const Banner = () => {
 <Typography
     variant='h2'
     style={{
-        textAlign: 'center',
         fontWeight: 'bold',
         marginBottom: 15,
         fontFamily: 'Josefin Sans',
@@ -40,7 +45,6 @@ const Banner = () => {
 <Typography
     variant='subtitle2'
     style={{
-        textAlign: 'center',
         color: 'darkgray',
         fontFamily: 'Josefin Sans',
         textTransform: 'capitalize',
@@ -49,6 +53,8 @@ const Banner = () => {
     Where you will get all Info about Crypto Currency
 </Typography>
     </div>
+    <Carousal/>
+
     </Container>
     </div>
   )
