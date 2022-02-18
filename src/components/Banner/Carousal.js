@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { makeStyles, Img } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import axios from 'axios';
 import { TrendingCoins } from '../../Config/api';
 import { CryptoState } from '../../CryptoContext';
@@ -12,9 +12,19 @@ const useStyle = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     },
-   
+   curoselItem: {
+       display: 'flex',
+       flexDirection: 'column',
+       alignItems: 'center',
+       cursor: 'pointer',
+       textTransform: 'uppercase',
+       color: 'white'
+   },
   }));
 
+  export function numberWithCommas(x){
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  }
 
 const Carousal = () => {
 
@@ -22,7 +32,7 @@ const Carousal = () => {
 
     const classes = useStyle();
 
-    const { currency } = CryptoState();
+    const { currency, symbol } = CryptoState();
 
 const fetchTrendingCoins = async () => {
     const { data } = await axios.get(TrendingCoins(currency));
@@ -35,8 +45,10 @@ fetchTrendingCoins();
 }, [currency]);
 
 const items = trending.map((coin) => {
+
+    let profit = coin.price_change_percentage_24h >= 0;
 return(
-    <Link className={classes.carouselItem}
+    <Link className={classes.curoselItem}
     to={`/coins/${coin.id}`}>
     <img 
         src={coin?.image}
@@ -46,10 +58,19 @@ return(
     />
     <span>
         {coin?.symbol}
-        &nbsp
-        <span>
-            
+        &nbsp;
+        <span style={{
+            color: profit >0 ? 'darkgreen' : 'red',
+            fontWeight: 500, 
+         }}>
+            {profit && '+'} {coin?.price_change_percentage_24h.toFixed(2)} %
         </span>
+    </span>
+    <span style={{
+        fontSize: 22,
+        fontWeight: 500,
+    }}>
+    {symbol} {numberWithCommas(coin?.current_price.toFixed(2))}
     </span>
     </Link>
 )
