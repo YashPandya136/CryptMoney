@@ -60,7 +60,6 @@ const CoinTable = () => {
   const useStyle = makeStyles({
     banner: {
       backgroundImage: "url(./dark1.jpg)",
-
       backgroundSize: "cover",
     },
     row: {
@@ -110,7 +109,9 @@ const CoinTable = () => {
                   backgroundColor: "goldenrod",
                 }}
               >
-                <TableRow>
+                <TableRow style={{
+                  display: 'auto',
+                }}>
                   {["Coin", "Price", "24h Change", "Market Cap"].map((head) => (
                     <TableCell
                       style={{
@@ -132,9 +133,9 @@ const CoinTable = () => {
 
                   return (
                     <TableRow
-                      onClick={() => navigate.push(`./coins/${row.id}`)}
-                      className={classes.row}
-                      key={row.className}
+                     onClick={() => navigate.push(`/coins/${row.id}`)}
+                     className={classes.row}
+                     key={row.name}
                     >
                       <TableCell
                         component="th"

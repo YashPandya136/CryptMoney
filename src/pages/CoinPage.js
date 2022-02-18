@@ -2,7 +2,9 @@ import React from 'react'
 
 const CoinPage = () => {
   return (
-    <div>CoinPage</div>
+    <h1>
+    Coin Page
+    </h1>
   )
 }
 
