@@ -6,7 +6,10 @@ import Carousal from './Carousal';
 
 const useStyle = makeStyles({
     banner: {
-      backgroundImage: "url(./banner2.jpg)",
+      backgroundImage: "url(./dark1.jpg)",
+    //   backgroundRepeat: 'norepeat',
+    //   backgroundAttachment: 'fixed', 
+      backgroundSize: 'cover'
     },
     bannerContent: {
         height: 400,

@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     title: {
         flex: 1,
         color: 'gold',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Josefin Sans',
         fontWeight: 'bold',
         cursor: 'pointer'
     },
