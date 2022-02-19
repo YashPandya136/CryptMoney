@@ -133,7 +133,7 @@ const CoinTable = () => {
 
                   return (
                     <TableRow
-                     onClick={() => navigate.push(`/coins/${row.id}`)}
+                    onClick={() => navigate(`/coins/${row.id}`)}
                      className={classes.row}
                      key={row.name}
                     >
