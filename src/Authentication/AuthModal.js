@@ -2,7 +2,7 @@ import React from 'react'
 
 const AuthModal = () => {
   return (
-    <div>login</div>
+    <div> login/ SignUp </div>
   )
 }
 
