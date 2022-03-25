@@ -9,7 +9,7 @@ const Crypto = createContext();
 const CryptoContext = ({children}) => {
 
     const [currency, setCurrency] = useState('INR');
-
+    const [user, setUser] = useState(null);
     const [symbol, setSymbol] = useState('₹');
     const [coins, setCoins] = useState([]);
     const [loding, setLoding] = useState(false);
