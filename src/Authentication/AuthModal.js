@@ -3,7 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { AppBar, Button } from "@material-ui/core";
+import { AppBar, Button, Tabs, Tab } from "@material-ui/core";
+import Signup from "./Signup";
+import Login from "./Login";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -12,10 +14,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
+    width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    color: "white",
+    borderRadius: 10,
   },
 }));
 
@@ -29,6 +31,12 @@ export default function TransitionsModal() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -60,9 +68,23 @@ export default function TransitionsModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-           <AppBar position="static">
-
+           <AppBar position="static"
+           style={{backgroundColor: 'transparent', color:'whitesmoke'}}
+           >
+           <Tabs
+           value={value}
+           onChange={handleChange}
+           variant="fullWidth"
+           style={{borderRadius: 10}}
+           >
+           <Tab label='Login' />
+           <Tab label='Sign Up' />
+           </Tabs>
            </AppBar>
+           
+             {value===0 && <Login handleClose={handleClose} />}
+             {value===1 && <Signup handleClose={handleClose} />}
+           
           </div>
         </Fade>
       </Modal>
