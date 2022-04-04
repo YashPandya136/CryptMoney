@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, TextField } from "@material-ui/core";
+import { Box, Button, TextField } from "@material-ui/core";
 
 const Signup = ({ handleClose }) => {
   const [email, setEmail] = useState("");
@@ -8,6 +8,10 @@ const Signup = ({ handleClose }) => {
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const handleSubmit = () => {
+    if(password!=confirmPassword);
+    
+  }
   return (
     <Box
       p={3}
@@ -25,6 +29,30 @@ const Signup = ({ handleClose }) => {
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
         />
+        <TextField 
+            variant='outlined'
+            type='password'
+            label=' Enter Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+        />
+        <TextField 
+            variant='outlined'
+            type='Confirm Password'
+            label='Confirm  Password'
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            fullWidth
+        />
+        <Button
+          variant="contained"
+          size="large"
+          style={{backgroundColor: "#EEBC1D"}}
+          onClick={handleSubmit}
+        >
+          Sign Up
+        </Button>
     </Box>
   );
 };
