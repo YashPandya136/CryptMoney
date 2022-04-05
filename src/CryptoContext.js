@@ -1,19 +1,21 @@
-import React, { createContext, useContext, useEffect } from 'react';
-import { useState } from 'react';
-import { CoinList } from './Config/api';
-import axios from 'axios';
+import React, { createContext, useContext, useEffect } from "react";
+import { useState } from "react";
+import { CoinList } from "./Config/api";
+import axios from "axios";
 
 const Crypto = createContext();
 
-
-const CryptoContext = ({children}) => {
-
-    const [currency, setCurrency] = useState('INR');
-    const [user, setUser] = useState(null);
-    const [symbol, setSymbol] = useState('₹');
-    const [coins, setCoins] = useState([]);
-    const [loding, setLoding] = useState(false);
-
+const CryptoContext = ({ children }) => {
+  const [currency, setCurrency] = useState("INR");
+  const [user, setUser] = useState(null);
+  const [symbol, setSymbol] = useState("₹");
+  const [coins, setCoins] = useState([]);
+  const [loding, setLoding] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    type: "Success",
+  });
 
   const fetchCoins = async () => {
     setLoding(true);
@@ -22,22 +24,31 @@ const CryptoContext = ({children}) => {
     setLoding(false);
   };
 
-useEffect(() => {
-    if(currency === 'INR') setSymbol('₹');
-    else if (currency === 'USD') setSymbol('$');
-}, [currency]);
+  useEffect(() => {
+    if (currency === "INR") setSymbol("₹");
+    else if (currency === "USD") setSymbol("$");
+  }, [currency]);
 
-    return (
-    <Crypto.Provider value={{currency, symbol, setCurrency, coins, loding, fetchCoins}}>
-    {
-        children
-    }
+  return (
+    <Crypto.Provider
+      value={{
+        currency,
+        symbol,
+        setCurrency,
+        coins,
+        loding,
+        fetchCoins,
+        alert,
+        setAlert,
+      }}
+    >
+      {children}
     </Crypto.Provider>
-  )
-}
+  );
+};
 
-export default CryptoContext
+export default CryptoContext;
 
 export const CryptoState = () => {
-   return useContext(Crypto);
-}
+  return useContext(Crypto);
+};
