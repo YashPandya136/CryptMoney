@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, TextField } from "@material-ui/core";
+import { CryptoState } from "../CryptoContext";
 
 const Signup = ({ handleClose }) => {
   const [email, setEmail] = useState("");
@@ -8,9 +9,16 @@ const Signup = ({ handleClose }) => {
 
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [setAlert] = CryptoState();
+
   const handleSubmit = () => {
     if(password!=confirmPassword){
-      
+      setAlert({
+        open: true,
+        message: "Password do not match !!!",
+        type: "error",         
+      })
+      return;
     }
     
   }
