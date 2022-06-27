@@ -25,7 +25,6 @@
 [![Watchers](	https://img.shields.io/github/watchers/yashpandya136/CryptMoney?label=Watch&style=for-the-badge)](https://github.com/yashpandya136/CryptMoney/) 
 
 
-[![Generic badge](https://img.shields.io/badge/view-demo-blue?style=for-the-badge&label=View%20Demo%20Video)](#) 
 
 
 
